@@ -56,14 +56,18 @@ async function main() {
     },
   });
 
+  const response: string[] = [];
+
   for await (const message of q) {
     if (message.type === 'assistant' && message.message) {
       const textContent = message.message.content.find((c: any) => c.type === 'text');
       if (textContent && 'text' in textContent) {
         console.log('Claude says:', textContent.text);
+        response.push('Claude says:', textContent.text);
       }
     }
   }
+  return response;
 }
 
 export { main };

@@ -16,8 +16,8 @@ app.get("/health", (_req, res) => {
 });
 
 app.get("/hello-world", async (_req, res) => {
-  await main();
-  res.json({ status: "ok" });
+  const response = await main();
+  res.json({ status: "ok", response });
 });
 
 const port = process.env.PORT || 3000;
