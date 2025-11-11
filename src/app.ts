@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
-import { main } from "./hello-world.js";
+import { main } from "./hello-world/hello-world.js";
 
 dotenv.config();
 
@@ -16,8 +16,8 @@ app.get("/health", (_req, res) => {
 });
 
 app.get("/hello-world", async (_req, res) => {
-  const response = await main();
-  res.json({ status: "ok", response });
+  await main();
+  res.json({ status: "ok" });
 });
 
 const port = process.env.PORT || 3000;
