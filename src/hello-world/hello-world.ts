@@ -2,9 +2,9 @@ import { query } from '@anthropic-ai/claude-agent-sdk';
 import type { HookJSONOutput } from "@anthropic-ai/claude-agent-sdk";
 import * as path from "path";
 
-async function main() {
+async function main(prompt: string) {
   const q = query({
-    prompt: 'Hello, Claude! Please introduce yourself in one sentence.',
+    prompt: prompt,
   });
 
   const response: string[] = [];

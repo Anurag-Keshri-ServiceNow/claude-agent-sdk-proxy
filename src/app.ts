@@ -15,10 +15,12 @@ app.get("/health", (_req, res) => {
   res.json({ status: "ok" });
 });
 
-app.get("/hello-world", async (_req, res) => {
-  const response = await main();
+app.get("/hello-world", async (req, res) => {
+  const prompt = (req.query.prompt as string) || "Hello, Claude! Please introduce yourself in one sentence.";
+  const response = await main(prompt);
   res.json({ status: "ok", response });
 });
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
